@@ -32,32 +32,38 @@
         android:textStyle="bold" />
 
     <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/location"
-        android:layout_alignLeft="@+id/name"
-        android:layout_alignStart="@+id/name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp"
         android:src="@drawable/location" />
 
     <TextView
         android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
-        android:layout_marginTop="25dp"
-        android:layout_toEndOf="@+id/relativeLayout"
-        android:layout_toRightOf="@+id/relativeLayout"
+        android:layout_alignBottom="@+id/relativeLayout"
+        android:layout_marginBottom="11dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/imageView4"
+        android:layout_toRightOf="@+id/imageView4"
         android:text="Location"
         android:textStyle="italic" />
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_alignLeft="@+id/icon"
-        android:layout_alignStart="@+id/icon"
-        android:layout_below="@+id/icon"
-        android:layout_marginTop="31dp"
-        android:id="@+id/relativeLayout">
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/icon"
+        android:layout_marginEnd="54dp"
+        android:layout_marginRight="54dp">
 
         <ImageView
             android:id="@+id/imageView"
@@ -81,14 +87,14 @@
             android:text="TextView" />
 
         <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/imageView"
             android:layout_alignRight="@+id/imageView"
             android:layout_below="@+id/gold"
             android:layout_marginTop="14dp"
-            android:src="@drawable/silver"
-            android:id="@+id/imageView2"/>
+            android:src="@drawable/silver" />
 
         <TextView
             android:id="@+id/silver"
@@ -100,13 +106,13 @@
             android:text="TextView" />
 
         <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/bronze"
-            android:id="@+id/imageView3" />
+            android:src="@drawable/bronze" />
 
         <TextView
             android:id="@+id/bronze"

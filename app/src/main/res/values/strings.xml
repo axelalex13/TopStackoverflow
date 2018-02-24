@@ -2,4 +2,6 @@
     <string name="app_name">Top Stackoverflow</string>
     <string name="user_icon">user icon</string>
     <string name="name">Name</string>
+    <string name="name_example">Name example</string>
+    <string name="urlTop10"><![CDATA[https://api.stackexchange.com/2.2/users?pagesize=10&order=desc&sort=reputation&site=stackoverflow]]></string>
 </resources>

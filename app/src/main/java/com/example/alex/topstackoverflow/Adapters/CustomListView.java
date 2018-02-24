@@ -49,7 +49,8 @@ public class CustomListView extends ArrayAdapter<User> {
         Picasso.with(context).load(users.get(position).getProfile_image()).fit().centerCrop()
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(viewHolder.ivw);
-        viewHolder.tvw1.setText(users.get(position).getDisplay_name());
+        viewHolder.name.setText(users.get(position).getDisplay_name());
+        viewHolder.position.setText(String.valueOf(position +1 )+".");
 
 
         return r;
@@ -57,12 +58,14 @@ public class CustomListView extends ArrayAdapter<User> {
     }
 
     class ViewHolder {
-        TextView tvw1;
+        TextView name;
+        TextView position;
         ImageView ivw;
 
         ViewHolder(View v) {
-            tvw1 = (TextView) v.findViewById(R.id.name);
+            name = (TextView) v.findViewById(R.id.name);
             ivw = (ImageView) v.findViewById(R.id.icon);
+            position = (TextView) v.findViewById(R.id.position);
 
         }
     }

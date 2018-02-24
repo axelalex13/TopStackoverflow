@@ -1,6 +1,7 @@
 package com.example.alex.topstackoverflow;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
@@ -13,13 +14,22 @@ public class UserDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_details);
-        ImageView icon = (ImageView) findViewById(R.id.icon);
-        TextView name = (TextView) findViewById(R.id.name);
-        TextView location = (TextView) findViewById(R.id.location);
-        TextView bronze = (TextView) findViewById(R.id.bronze);
-        TextView silver = (TextView) findViewById(R.id.silver);
-        TextView gold = (TextView) findViewById(R.id.gold);
+
+        //am folosit layout-uri diferite in functie de orientarea ecranului
+
+        if (getResources().getConfiguration().orientation ==
+                Configuration.ORIENTATION_PORTRAIT) {
+            setContentView(R.layout.activity_user_details);
+        } else {
+            setContentView(R.layout.activity_user_details_landscape);
+        }
+
+        ImageView icon =  findViewById(R.id.icon);
+        TextView name =  findViewById(R.id.name);
+        TextView location =  findViewById(R.id.location);
+        TextView bronze =  findViewById(R.id.bronze);
+        TextView silver =  findViewById(R.id.silver);
+        TextView gold =  findViewById(R.id.gold);
 
 
         getSupportActionBar().setTitle("User Details");
@@ -34,8 +44,5 @@ public class UserDetails extends AppCompatActivity {
         Picasso.with(UserDetails.this).load(MainActivity.users.get(position).getProfile_image()).fit().centerCrop()
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(icon);
-
-
-
     }
 }
