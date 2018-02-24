@@ -50,6 +50,8 @@ public class CustomListView extends ArrayAdapter<User> {
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(viewHolder.ivw);
         viewHolder.tvw1.setText(users.get(position).getDisplay_name());
+
+
         return r;
 
     }

@@ -1,8 +1,11 @@
 package com.example.alex.topstackoverflow;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.volley.Request;
@@ -53,6 +56,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         queue.add(stringRequest);
+
+        listView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent details = new Intent(MainActivity.this, UserDetails.class);
+                        details.putExtra("position", position);
+                        startActivity(details);
+
+                    }
+                }
+        );
     }
 
 
