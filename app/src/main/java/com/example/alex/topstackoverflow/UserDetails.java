@@ -14,9 +14,12 @@ public class UserDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("User Details");
+
+        Intent intent = getIntent();
+        final int position = intent.getIntExtra("position", -1);
 
         //am folosit layout-uri diferite in functie de orientarea ecranului
-
         if (getResources().getConfiguration().orientation ==
                 Configuration.ORIENTATION_PORTRAIT) {
             setContentView(R.layout.activity_user_details);
@@ -24,17 +27,12 @@ public class UserDetails extends AppCompatActivity {
             setContentView(R.layout.activity_user_details_landscape);
         }
 
-        ImageView icon =  findViewById(R.id.icon);
-        TextView name =  findViewById(R.id.name);
-        TextView location =  findViewById(R.id.location);
-        TextView bronze =  findViewById(R.id.bronze);
-        TextView silver =  findViewById(R.id.silver);
-        TextView gold =  findViewById(R.id.gold);
-
-
-        getSupportActionBar().setTitle("User Details");
-        Intent intent = getIntent();
-        final int position = intent.getIntExtra("position", -1);
+        ImageView icon = findViewById(R.id.icon);
+        TextView name = findViewById(R.id.name);
+        TextView location = findViewById(R.id.location);
+        TextView bronze = findViewById(R.id.bronze);
+        TextView silver = findViewById(R.id.silver);
+        TextView gold = findViewById(R.id.gold);
 
         name.setText(MainActivity.users.get(position).getDisplay_name());
         location.setText(MainActivity.users.get(position).getLocation());
@@ -45,4 +43,5 @@ public class UserDetails extends AppCompatActivity {
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(icon);
     }
+
 }
