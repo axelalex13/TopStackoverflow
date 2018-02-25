@@ -64,7 +64,7 @@ public class CustomListView extends ArrayAdapter<User> {
 
         ViewHolder(View v) {
             name = (TextView) v.findViewById(R.id.name);
-            ivw = (ImageView) v.findViewById(R.id.icon);
+            ivw = (ImageView) v.findViewById(R.id.icon_list);
             position = (TextView) v.findViewById(R.id.position);
 
         }

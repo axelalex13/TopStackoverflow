@@ -4,9 +4,13 @@ package com.example.alex.topstackoverflow;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -27,6 +31,7 @@ import com.example.alex.topstackoverflow.Adapters.CustomListView;
 import com.example.alex.topstackoverflow.models.MyResponse;
 import com.example.alex.topstackoverflow.models.User;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
@@ -46,11 +51,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final ListView listView = findViewById(R.id.listViewTop);
 
+        //folosesc Volley pentru lucrul cu API-ul
 
         RequestQueue queue = Volley.newRequestQueue(this);
-
         String url = getString(R.string.urlTop10);
-
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -105,14 +109,42 @@ public class MainActivity extends AppCompatActivity {
 
         queue.add(jsObjRequest);
 
+        DisplayMetrics metrics = new DisplayMetrics();
+        MainActivity.this.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        float yInches= metrics.heightPixels/metrics.ydpi;
+        float xInches= metrics.widthPixels/metrics.xdpi;
+        final double diagonalInches = Math.sqrt(xInches*xInches + yInches*yInches);
+
         listView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent details = new Intent(MainActivity.this, UserDetails.class);
-                        details.putExtra("position", position);
-                        startActivity(details);
+                        if (diagonalInches>=9){
+                            RelativeLayout layoutDetails = findViewById(R.id.layoutDetails);
+                            layoutDetails.setAlpha(1);
+                            TextView location  = findViewById(R.id.location);
+                            ImageView icon_details =  findViewById(R.id.icon);
+                            TextView name =  findViewById(R.id.name);
+                            TextView bronze =  findViewById(R.id.bronze);
+                            TextView silver =  findViewById(R.id.silver);
+                            TextView gold =  findViewById(R.id.gold);
+                            name.setText(MainActivity.users.get(position).getDisplay_name());
+                            location.setText(MainActivity.users.get(position).getLocation());
+                            bronze.setText(String.valueOf(MainActivity.users.get(position).getBadge_counts().getBronze()));
+                            silver.setText(String.valueOf(MainActivity.users.get(position).getBadge_counts().getSilver()));
+                            gold.setText(String.valueOf(MainActivity.users.get(position).getBadge_counts().getGold()));
+                            Picasso.with(MainActivity.this).load(MainActivity.users.get(position).getProfile_image()).fit().centerCrop()
+                                    .placeholder(R.drawable.ic_launcher_background)
+                                    .into(icon_details);
 
+
+
+                        }else{
+                            Intent details = new Intent(MainActivity.this, UserDetails.class);
+                            details.putExtra("position", position);
+                            details.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            startActivity(details);
+                        }
                     }
                 }
         );

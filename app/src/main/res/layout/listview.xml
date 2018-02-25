@@ -5,7 +5,7 @@
     android:background="@color/myGrey">
 
     <ImageView
-        android:id="@+id/icon"
+        android:id="@+id/icon_list"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
@@ -24,8 +24,8 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
-        android:layout_toEndOf="@+id/icon"
-        android:layout_toRightOf="@+id/icon"
+        android:layout_toEndOf="@+id/icon_list"
+        android:layout_toRightOf="@+id/icon_list"
         android:gravity="center_vertical"
         android:text="@string/name_example"
         android:textSize="18sp"
@@ -36,8 +36,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/icon"
-        android:layout_toRightOf="@+id/icon"
+        android:layout_toEndOf="@+id/icon_list"
+        android:layout_toRightOf="@+id/icon_list"
         android:text="1"
         android:textSize="14sp"
         android:textStyle="bold|italic" />
